@@ -79,14 +79,14 @@ function App() {
 
       <div>
         <label>ROI Percentage (%):</label>
-        <button onClick={(e) => setRoiPercentage(roiPercentage - 1)}>-</button>
+        <button onClick={(e) => setRoiPercentage(Number(roiPercentage) - 1)}>-</button>
         <input
           type="text"
           value={roiPercentage + "%"}
-          onChange={(e) => setRoiPercentage(Number(e.target.value.replace(/\D/g, "")))}
+          onChange={(e) => setRoiPercentage(e.target.value.replace(/[^\.0-9]/g, ''))}
           required
         />
-        <button onClick={(e) => setRoiPercentage(roiPercentage + 1)}>+</button>
+        <button onClick={(e) => setRoiPercentage(Number(roiPercentage) + 1)}>+</button>
       </div>
 
       <div>
@@ -137,7 +137,7 @@ function App() {
               {fullResult.map((result) => (
                 <tr key={result.year}>
                   <td>{result.year}</td>
-                  <td>{result.balance}</td>
+                  <td>${result.balance}</td>
                 </tr>
               ))}
             </tbody>

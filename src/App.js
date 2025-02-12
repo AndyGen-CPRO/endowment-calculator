@@ -14,6 +14,9 @@ function App() {
   const today = new Date();
   const currentYear = today.getFullYear();
 
+  let displayPledgeAmount = (annualAmount * pledgePeriod).toLocaleString(undefined, {maximumFractionDigits:0});
+  let displayAnnualAmount = annualAmount.toLocaleString(undefined, {maximumFractionDigits:0})
+
   useEffect(() => {
     calculateEndowment();
   }, [annualAmount, pledgePeriod, roiPercentage, displayGrowth])
@@ -129,6 +132,18 @@ function App() {
 
       {showResult && (
         <div>
+          <div className="calculation-report">
+            <h2>Endowment Calculation Report:</h2>
+            <p>Endowing a donation of ${displayPledgeAmount} over a {pledgePeriod} year period can be seen in the illustration below.</p>
+            <ul>
+              <li>The ${displayPledgeAmount} commitment is made up of {pledgePeriod} payment(s) of ${displayAnnualAmount}.</li>
+              <li>Your donation will be invested at a rate of approximately {roiPercentage}%.</li>
+              <li>From the {roiPercentage}% of income generation, approximately {disembursementFee}% will be directed to 
+                your program of support. The endowment calculator shows the continued impact of the donation.</li>
+              <li>An annual administration fee of {adminFee}% will be deducted from the {roiPercentage}% approximate income. 
+                The remainder from the {roiPercentage}% approximate income generated will be added to the capital of your fund.</li>
+            </ul>
+          </div>
           <div className="result-table">
             <h3>5 Year Growth</h3>
             <table>

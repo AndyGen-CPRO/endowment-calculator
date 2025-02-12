@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   const [annualAmount, setAnnualAmount] = useState(10000);
   const [pledgePeriod, setPledgePeriod] = useState(5);
-  const [roiPercentage, setRoiPercentage] = useState(6);
+  const [roiPercentage, setRoiPercentage] = useState(7);
   const [displayGrowth, setDisplayGrowth] = useState(5);
   const [fullResult, setFullResult] = useState([]);
   const [showResult, setShowResult] = useState(false); //for conditional rendering
@@ -84,14 +84,15 @@ function App() {
 
         <div>
           <label>ROI Percentage (%):</label>
-          <button onClick={(e) => setRoiPercentage(Number(roiPercentage) - 1)}>-</button>
+          <button onClick={(e) => setRoiPercentage(Number(roiPercentage) - 1)} hidden>-</button>
           <input
             type="text"
             value={roiPercentage + "%"}
             onChange={(e) => setRoiPercentage(e.target.value.replace(/[^\.0-9]/g, ''))}
             required
+            disabled
           />
-          <button onClick={(e) => setRoiPercentage(Number(roiPercentage) + 1)}>+</button>
+          <button onClick={(e) => setRoiPercentage(Number(roiPercentage) + 1)} hidden>+</button>
         </div>
 
         <div>
@@ -127,7 +128,7 @@ function App() {
           </select>
         </div>
 
-        <button className='calculate-button' onClick={() => setShowResult(true)}>Calculate</button>
+        {!showResult && <button className='calculate-button' onClick={() => setShowResult(true)}>Calculate</button>}
       </div>
 
       {showResult && (

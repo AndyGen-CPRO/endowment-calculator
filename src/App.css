@@ -29,6 +29,10 @@
   border: none;
 }
 
+.calculation-report li {
+  padding-bottom: 3%;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;

@@ -20,9 +20,13 @@
   font-size: 16px
 }
 
-label {
+.endowment-form label {
   display: block;
   font-size: 20px;
+}
+
+.endowment-form input {
+  border: none;
 }
 
 table {
@@ -34,7 +38,7 @@ table {
 }
 
 th, td {
-  border: 1px solid #ddd;
+  border: 1px solid #3cce88;
   padding: 10px;
   color: #3cce88
 }

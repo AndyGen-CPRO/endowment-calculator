@@ -130,7 +130,7 @@ function App() {
       {showResult && (
         <div>
           <div className="result-table">
-            <h3>Year 1 - 5</h3>
+            <h3>5 Year Growth</h3>
             <table>
               <thead>
                 <tr>
@@ -155,7 +155,7 @@ function App() {
 
           {displayGrowth >= 10 &&
           <div className="result-table">
-            <h3>Year 6 - 10</h3>
+            <h3>10 Year Growth</h3>
             <table>
               <thead>
                 <tr>
@@ -181,7 +181,7 @@ function App() {
 
           {displayGrowth >= 15 &&
           <div className="result-table">
-            <h3>Year 11 - 15</h3>
+            <h3>15 Year Growth</h3>
             <table>
               <thead>
                 <tr>
@@ -206,7 +206,7 @@ function App() {
           }
           {displayGrowth >= 20 &&
           <div className="result-table">
-            <h3>Year 16 - 20</h3>
+            <h3>20 Year Growth</h3>
             <table>
               <thead>
                 <tr>
@@ -232,7 +232,7 @@ function App() {
 
         {displayGrowth >= 25 &&
         <div className="result-table">
-          <h3>Year 21 - 25</h3>
+          <h3>25 Year Growth</h3>
           <table>
             <thead>
               <tr>

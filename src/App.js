@@ -15,7 +15,8 @@ function App() {
   const currentYear = today.getFullYear();
 
   let displayPledgeAmount = (annualAmount * pledgePeriod).toLocaleString(undefined, {maximumFractionDigits:0});
-  let displayAnnualAmount = annualAmount.toLocaleString(undefined, {maximumFractionDigits:0})
+  let displayAnnualAmount = annualAmount.toLocaleString(undefined, {maximumFractionDigits:0});
+
 
   useEffect(() => {
     calculateEndowment();
@@ -26,8 +27,15 @@ function App() {
     let results = [];
 
     for (let year = 1; year <= displayGrowth; year++) {
-      if (year <= pledgePeriod) {
-        balance += annualAmount;
+      if (year === 1) {
+        results.push({
+          year,
+          balance: annualAmount.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}),
+          donationImpact: 0.00.toFixed(2)
+        })
+        
+        balance += annualAmount
+        continue
       }
 
       let generatedIncome = balance * roiPercentage / 100;
@@ -36,10 +44,15 @@ function App() {
 
       let yearBalance = generatedIncome - (calculatedDisembursement + calculatedAdminFee);
       balance += yearBalance;
+
+      if (year <= pledgePeriod) {
+        balance += annualAmount;
+      }
       
       results.push({
         year,
         balance: balance.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}),
+        donationImpact: calculatedDisembursement.toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2})
       })
     }
 
@@ -152,6 +165,7 @@ function App() {
                 <tr>
                   <th>Year</th>
                   <th>Balance</th>
+                  <th>Impact of Donation</th>
                 </tr>
               </thead>
               <tbody>
@@ -161,6 +175,7 @@ function App() {
                   <tr key={result.year}>
                     <td>{result.year}</td>
                     <td>${result.balance}</td>
+                    <td>${result.donationImpact}</td>
                   </tr>
                   }
                   </>
@@ -177,6 +192,7 @@ function App() {
                 <tr>
                   <th>Year</th>
                   <th>Balance</th>
+                  <th>Impact of Donation</th>
                 </tr>
               </thead>
               <tbody>
@@ -186,6 +202,7 @@ function App() {
                   <tr key={result.year}>
                     <td>{result.year}</td>
                     <td>${result.balance}</td>
+                    <td>${result.donationImpact}</td>
                   </tr>
                   }
                   </>
@@ -203,6 +220,7 @@ function App() {
                 <tr>
                   <th>Year</th>
                   <th>Balance</th>
+                  <th>Impact of Donation</th>
                 </tr>
               </thead>
               <tbody>
@@ -212,6 +230,7 @@ function App() {
                   <tr key={result.year}>
                     <td>{result.year}</td>
                     <td>${result.balance}</td>
+                    <td>${result.donationImpact}</td>
                   </tr>
                   }
                   </>
@@ -228,6 +247,7 @@ function App() {
                 <tr>
                   <th>Year</th>
                   <th>Balance</th>
+                  <th>Impact of Donation</th>
                 </tr>
               </thead>
               <tbody>
@@ -237,6 +257,7 @@ function App() {
                   <tr key={result.year}>
                     <td>{result.year}</td>
                     <td>${result.balance}</td>
+                    <td>${result.donationImpact}</td>
                   </tr>
                   }
                   </>
@@ -254,6 +275,7 @@ function App() {
               <tr>
                 <th>Year</th>
                 <th>Balance</th>
+                <th>Impact of Donation</th>
               </tr>
             </thead>
             <tbody>
@@ -263,6 +285,7 @@ function App() {
                 <tr key={result.year}>
                   <td>{result.year}</td>
                   <td>${result.balance}</td>
+                  <td>${result.donationImpact}</td>
                 </tr>
                 }
                 </>
